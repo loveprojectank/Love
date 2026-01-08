@@ -5,97 +5,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Ankita ❤️</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  background:linear-gradient(#fff,#ffe6f0);
-  font-family:system-ui,sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-}
+  body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(180deg,#fff,#ffe6f0);
+    font-family:system-ui, sans-serif;
+    text-align:center;
+    overflow-x:hidden;
+  }
 
-.container{
-  max-width:600px;
-  margin:auto;
-  padding:20px;
-}
+  .container{
+    padding:20px;
+    max-width:600px;
+    margin:auto;
+  }
 
-/* ❤️ Heart + Name (NO GAP) */
-.name-wrap{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0;
-}
+  /* ❤️ Heart + Name (NO GAP FIXED) */
+  .name-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    margin-top:20px;
+  }
 
-.big-heart{
-  font-size:64px;
-  line-height:1;
-  transform:translateY(8px);
-  animation:beat 1.3s infinite;
-}
+  .big-heart{
+    font-size:64px;
+    margin:0;
+    padding:0;
+    line-height:1;
+    transform:translateY(8px);
+    animation:heartbeat 1.3s infinite;
+  }
 
-@keyframes beat{
-  0%,100%{transform:translateY(8px) scale(1);}
-  50%{transform:translateY(8px) scale(1.1);}
-}
+  .name{
+    font-family:'Pacifico', cursive;
+    font-size:48px;
+    margin:0;
+    line-height:1.1;
+    color:#ff2f7d;
+  }
 
-.name{
-  font-family:'Pacifico',cursive;
-  font-size:48px;
-  margin:0;
-  color:#ff2f7d;
-}
+  @keyframes heartbeat{
+    0%,100%{transform:translateY(8px) scale(1);}
+    50%{transform:translateY(8px) scale(1.1);}
+  }
 
-/* Typing wait */
-.typing{
-  margin-top:40px;
-  font-family:monospace;
-  font-size:20px;
-  color:#ff6b9d;
-  min-height:28px;
-}
+  /* Typing feel */
+  .typing-hint{
+    margin-top:40px;
+    font-family:monospace;
+    font-size:20px;
+    color:#ff6b9d;
+    letter-spacing:1px;
+    min-height:28px;
+  }
 
-/* Shayari */
-.shayari{
-  display:none;
-  margin-top:30px;
-  font-size:20px;
-  line-height:1.7;
-  padding:0 10px;
-}
+  /* Shayari */
+  .shayari{
+    display:none;
+    margin-top:30px;
+    font-size:20px;
+    line-height:1.7;
+    color:#333;
+    padding:0 10px;
+    animation:fadeIn 1.2s ease;
+  }
 
-/* Buttons */
-.buttons{
-  margin-top:50px;
-  position:relative;
-  height:160px;
-}
-
-button{
-  padding:14px 30px;
-  font-size:20px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-}
-
-#noBtn{
-  background:#eee;
-  position:absolute;
-  left:50%;
-  top:40px;
-  transform:translate(-140px,0);
-  transition:transform .35s ease;
-}
-
-#yesBtn{
-  background:#ff2f7d;
-  color:#fff;
-  display:none;
-}
+  @keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
 </style>
 </head>
 
@@ -103,96 +87,43 @@ button{
 
 <div class="container">
 
+  <!-- ❤️ Name Section -->
   <div class="name-wrap">
     <div class="big-heart">❤️</div>
-    <div class="name">Ankita</div>
+    <h1 class="name">Ankita</h1>
   </div>
 
-  <div id="typing" class="typing"></div>
+  <!-- Typing Wait -->
+  <div id="typingHint" class="typing-hint"></div>
 
+  <!-- Shayari -->
   <div id="shayari" class="shayari">
     मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
     मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br><br>
+
     कैसे सीने से लगाऊँ कि किसी और के हो<br>
     मेरे होते तो बताता कि मोहब्बत क्या है
   </div>
 
-  <div class="buttons">
-    <button id="noBtn">No 🙄</button>
-    <button id="yesBtn">Yes ❤️</button>
-  </div>
-
 </div>
 
-<audio id="noVoice" src="ankita-voice.mp3"></audio>
-<audio id="yesSong" src="ankita-song.mp3"></audio>
-
 <script>
-/* Typing illusion */
-let dots=0;
-const typing=document.getElementById("typing");
-const shayari=document.getElementById("shayari");
+  const hint = document.getElementById("typingHint");
+  const shayari = document.getElementById("shayari");
 
-const typingAnim=setInterval(()=>{
-  dots=(dots+1)%4;
-  typing.textContent="typing"+ ".".repeat(dots)+"|";
-},500);
+  let dots = 0;
 
-setTimeout(()=>{
-  clearInterval(typingAnim);
-  typing.style.display="none";
-  shayari.style.display="block";
-},6000);
+  const typingAnim = setInterval(()=>{
+    dots = (dots + 1) % 4;
+    hint.textContent = "typing" + ".".repeat(dots) + "|";
+  },500);
 
-/* NO button diagonal (carrom goti) logic */
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
-const noVoice=document.getElementById("noVoice");
-
-let voiceAllowed=false;
-setTimeout(()=>{ voiceAllowed=true; },7000);
-
-const diagonals=[
-  {x:140,y:-60},
-  {x:-140,y:60},
-  {x:160,y:50},
-  {x:-160,y:-50}
-];
-let d=0;
-
-function moveDiagonal(){
-  const pos=diagonals[d%diagonals.length];
-  noBtn.style.transform=`translate(${pos.x}px,${pos.y}px)`;
-  d++;
-}
-
-/* touch / hover → diagonal bhagna */
-["mouseenter","touchstart"].forEach(evt=>{
-  noBtn.addEventListener(evt,()=>{
-    if(!voiceAllowed) moveDiagonal();
-  });
-});
-
-/* click */
-noBtn.addEventListener("click",()=>{
-  if(!voiceAllowed){
-    moveDiagonal();
-  }else{
-    noVoice.volume=1;
-    noVoice.play();
-    setTimeout(()=>{
-      noBtn.style.display="none";
-      yesBtn.style.display="inline-block";
-    },6000);
-  }
-});
-
-/* YES */
-yesBtn.addEventListener("click",()=>{
-  const song=document.getElementById("yesSong");
-  song.volume=1;
-  song.play();
-});
+  // ⏱️ WAIT TIME (6 seconds)
+  setTimeout(()=>{
+    clearInterval(typingAnim);
+    hint.style.display = "none";
+    shayari.style.display = "block";
+  },6000);
 </script>
 
 </body>
