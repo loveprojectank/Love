@@ -1,94 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Ankita ❤️</title>
+<title>Ankita ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+*{
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
 
 body{
-  background:linear-gradient(135deg,#ffd6e8,#ffffff);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  margin:0;
+  background:linear-gradient(135deg,#ffd6e8,#fff);
+  overflow-x:hidden;
 }
 
-.card{
-  width:95%;
+.container{
   max-width:520px;
+  margin:20px auto;
   background:#fff;
-  border-radius:30px;
-  padding:24px;
-  box-shadow:0 30px 70px rgba(255,105,180,.35);
-  max-height:90vh;
-  overflow-y:auto;
-  scroll-behavior:smooth;
-  text-align:center;
+  border-radius:20px;
+  padding:25px 20px 30px;
+  box-shadow:0 10px 40px rgba(255,105,180,.25);
   position:relative;
 }
 
+/* floating hearts */
+.heart{
+  position:fixed;
+  color:#ff4d88;
+  animation:floatUp 6s linear infinite;
+  opacity:.6;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(100vh);opacity:0}
+  to{transform:translateY(-10vh);opacity:1}
+}
+
+/* heading */
 h1{
+  margin:0;
+  text-align:center;
   font-family:cursive;
-  font-size:34px;
-  color:#ff4f9a;
+  font-size:42px;
+  color:#ff4d88;
 }
 
-.underline{
-  width:120px;height:3px;background:#ff4f9a;
-  margin:6px auto 18px;border-radius:10px;
+.subtitle{
+  text-align:center;
+  margin-top:4px;
+  font-size:15px;
+  color:#666;
 }
 
-.subhead{
-  font-size:14px;color:#777;margin-bottom:18px
-}
-
+/* text sections */
 .text{
-  font-size:18px;line-height:1.7;color:#444;margin-bottom:25px
-}
-
-.question{
-  font-size:17px;display:none;margin-top:20px
-}
-
-.buttons{
-  margin-top:25px;
+  text-align:center;
+  margin-top:30px;
+  font-size:18px;
+  line-height:1.7;
+  color:#444;
   display:none;
-  position:relative;
-  height:120px;
 }
 
-button{
-  padding:14px 30px;
+/* NO button */
+#noBtn{
+  margin:30px auto 0;
+  display:none;
+  padding:14px 36px;
   font-size:18px;
   border:none;
   border-radius:40px;
+  background:#ffd1e1;
+  color:#ff2f7d;
+  cursor:pointer;
+  position:relative;
+  transition:.3s;
+}
+
+/* YES button */
+#yesBtn{
+  display:none;
+  margin:30px auto 0;
+  padding:14px 45px;
+  font-size:20px;
+  border:none;
+  border-radius:40px;
+  background:#ff2f7d;
+  color:#fff;
   cursor:pointer;
 }
 
-#yesBtn{
-  background:#ff4f9a;color:#fff;display:none;
-}
-
-#noBtn{
-  background:#fff;
-  border:2px solid #ff4f9a;
-  color:#ff4f9a;
-  position:absolute;
-  left:50%;
-  top:20px;
-  transform:translateX(-50%);
-}
-
-/* HEART ABOVE LOVE TEXT */
+/* heart + love */
 .big-heart{
   font-size:60px;
   margin:0;
+  margin-top:-10px;
   line-height:1;
   display:none;
   animation:heartbeat 1.3s infinite;
+  text-align:center;
 }
 
 @keyframes heartbeat{
@@ -96,286 +110,183 @@ button{
   50%{transform:scale(1.25)}
 }
 
-/* LOVE TITLE */
 #loveTitle{
   font-family:cursive;
   font-size:44px;
-  margin:5px 0 10px;
+  margin:0 0 10px;
   opacity:0;
   transform:scale(.85);
+  text-align:center;
   background:linear-gradient(90deg,#ff2f7d,#ff9fc4,#ff2f7d);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  background-size:200% auto;
 }
 
-#loveTitle.show{
-  opacity:1;
-  transform:scale(1);
-  animation:glow 3s linear infinite;
-}
-
-@keyframes glow{
-  to{background-position:200% center}
-}
-
-#finalText{
-  font-size:22px;
-  color:#ff3b7f;
-  margin-top:20px;
-  min-height:80px;
-}
-
-/* MESSAGE AREA */
-#msgBox{
-  margin-top:20px;
+/* final line */
+.final-line{
+  text-align:center;
+  font-size:20px;
+  margin-top:10px;
+  color:#ff4d88;
   display:none;
 }
 
-.msg-row{
-  display:flex;
-  gap:10px;
+/* message box */
+.msg-box{
+  margin-top:25px;
+  display:none;
+  position:sticky;
+  bottom:0;
+  background:#fff;
+  padding:10px;
 }
 
 textarea{
-  flex:1;
-  height:70px;
+  width:100%;
+  height:90px;
   border-radius:15px;
-  border:1px solid #ccc;
+  border:1px solid #ffb6cf;
   padding:12px;
-  font-size:15px;
+  font-size:16px;
   resize:none;
 }
 
-.sendBtn{
+.send-btn{
+  margin-top:10px;
   width:100%;
-  margin-top:12px;
-  background:#25D366;
-  color:white;
   padding:14px;
-  border-radius:30px;
   border:none;
-  font-size:16px;
-}
-
-/* FLOATING WHEN KEYBOARD OPENS */
-#msgBox.floating{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  background:#fff;
-  padding:16px;
-  box-shadow:0 -10px 30px rgba(0,0,0,.15);
-  z-index:9999;
-  border-radius:18px 18px 0 0;
-}
-
-/* HEART FLOAT */
-.heart{
-  position:fixed;
-  color:red;
-  font-size:22px;
-  animation:float 4s linear forwards;
-}
-
-@keyframes float{
-  0%{bottom:0;opacity:1}
-  100%{bottom:100vh;opacity:0}
-}
-
-/* VOLUME OVERLAY */
-#volumeHint{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
+  border-radius:30px;
+  background:#25D366;
   color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+  font-size:18px;
+}
+
+.success{
   text-align:center;
-  z-index:99999;
+  color:#25D366;
+  margin-top:10px;
   display:none;
-}
-#volumeHint button{
-  margin-top:18px;
-  background:#ff4f9a;
-  color:#fff;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
+<div class="container">
 
 <h1>Ankita</h1>
-<div class="underline"></div>
+<div class="subtitle">This message is sent straight from my heart ❤️</div>
 
-<div class="subhead">
-This message is being sent straight from my heart ❤️
-</div>
-
-<div class="text">
+<div id="shayari1" class="text">
 मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
 मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br>
 कैसे सीने से लगाऊँ कि किसी और के हो<br>
 मेरे होते तो बताता कि मोहब्बत क्या है
 </div>
 
-<div class="question" id="question">
+<div id="shayari2" class="text">
 Main bas ek simple sawal poochna chahta hoon,<br>
 aur uska jawab sirf tumhari marzi se hona chahiye —<br>
-kya tumhare dil me mere liye pyaar hai?
+<b>kya tumhare dil me mere liye pyaar hai?</b>
 </div>
 
-<div class="buttons" id="buttons">
-  <button id="noBtn">No 😒</button>
-  <button id="yesBtn">Yes ❤️</button>
-</div>
+<button id="noBtn">No 😠</button>
+<button id="yesBtn">Yes ❤️</button>
 
 <div class="big-heart" id="bigHeart">❤️</div>
-
 <div id="loveTitle">I Love You Ankita</div>
 
-<div id="finalText"></div>
+<div class="final-line">
+तुम जिंदगी की वो कमी हो,<br>
+जो शायद जिंदगी भर रहेगी…!!!
+</div>
 
-<div id="msgBox">
-  <div class="msg-row">
-    <textarea id="msg"
-      placeholder="Whatever you truly feel for me — write it honestly… ❤️"></textarea>
-  </div>
-  <button class="sendBtn" onclick="sendMsg()">Send 💌</button>
+<div class="msg-box" id="msgBox">
+<textarea id="msg" placeholder="Whatever you truly feel for me — write it honestly... ❤️"></textarea>
+<button class="send-btn" onclick="sendMsg()">Send 💌</button>
+<div class="success" id="success">Message sent successfully ❤️</div>
 </div>
 
 </div>
 
-<!-- AUDIO -->
-<audio id="noVoice" src="ankita-voice.mp3"></audio>
-<audio id="yesSong" src="ankita-song.mp3"></audio>
-
-<!-- VOLUME OVERLAY -->
-<div id="volumeHint">
-  <h2>🔊 Turn up your volume</h2>
-  <p>This moment is special ❤️</p>
-  <button onclick="closeVolume()">OK</button>
-</div>
+<audio id="voice" src="ankita-voice.mp3"></audio>
+<audio id="song" src="ankita-song.mp3"></audio>
 
 <script>
-const question=document.getElementById("question");
-const buttons=document.getElementById("buttons");
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
-const card=document.getElementById("card");
-const finalText=document.getElementById("finalText");
-const msgBox=document.getElementById("msgBox");
-const msgInput=document.getElementById("msg");
-const bigHeart=document.getElementById("bigHeart");
-const volumeHint=document.getElementById("volumeHint");
-const noVoice=document.getElementById("noVoice");
-const yesSong=document.getElementById("yesSong");
+let noBtn=document.getElementById('noBtn');
+let yesBtn=document.getElementById('yesBtn');
+let noStart=Date.now();
+let voicePlayed=false;
 
-noVoice.volume=1;
-yesSong.volume=1;
-
-/* FLOW */
 setTimeout(()=>{
-  question.style.display="block";
-  setTimeout(()=>buttons.style.display="block",5000);
-},6000);
+  document.getElementById('shayari1').style.display='block';
+},1000);
 
-/* NO BUTTON */
-let noStart=null, voicePlayed=false;
+setTimeout(()=>{
+  document.getElementById('shayari2').style.display='block';
+  noBtn.style.display='block';
+},10000);
 
-noBtn.onclick=()=>{
-  if(!noStart) noStart=Date.now();
-  let t=Date.now()-noStart;
-
-  if(t<7000){
-    moveNo();
-    if(navigator.vibrate) navigator.vibrate(80);
-    return;
-  }
-
-  if(!voicePlayed){
-    voicePlayed=true;
-    volumeHint.style.display="flex";
-    if(navigator.vibrate) navigator.vibrate([200,100,200]);
-  }
-};
-
-function closeVolume(){
-  volumeHint.style.display="none";
-  noVoice.play();
-  setTimeout(()=>{
-    yesBtn.style.display="inline-block";
-    noBtn.style.display="none";
-  },6000);
-}
+noBtn.addEventListener('touchstart',moveNo);
+noBtn.addEventListener('mouseover',moveNo);
 
 function moveNo(){
-  const x=Math.random()*(card.clientWidth-noBtn.offsetWidth-20);
-  const y=Math.random()*70;
-  noBtn.style.transition="all .25s";
-  noBtn.style.left=x+"px";
-  noBtn.style.top=y+"px";
+  let elapsed=(Date.now()-noStart)/1000;
+  if(elapsed<7){
+    let x=Math.random()*200-100;
+    let y=Math.random()*150-75;
+    noBtn.style.transform=`translate(${x}px,${y}px)`;
+  }
 }
 
-/* YES */
-yesBtn.onclick=()=>{
-  yesSong.play();
-  yesBtn.style.display="none";
-  bigHeart.style.display="block";
-  document.getElementById("loveTitle").classList.add("show");
-  typeText();
-  hearts();
+noBtn.onclick=()=>{
+  let elapsed=(Date.now()-noStart)/1000;
+  if(elapsed>=7 && !voicePlayed){
+    document.getElementById('voice').play();
+    voicePlayed=true;
+    setTimeout(()=>{
+      yesBtn.style.display='block';
+      noBtn.style.display='none';
+    },6000);
+  }
 };
 
-function typeText(){
-  const txt="तुम जिंदगी की वो कमी हो, जो शायद जिंदगी भर रहेगी…!!!";
-  let i=0;
-  let t=setInterval(()=>{
-    finalText.innerHTML+=txt.charAt(i);
-    card.scrollTop=card.scrollHeight;
-    i++;
-    if(i>=txt.length){
-      clearInterval(t);
-      setTimeout(()=>msgBox.style.display="block",500);
-    }
-  },120);
-}
+yesBtn.onclick=()=>{
+  document.getElementById('song').play();
+  yesBtn.style.display='none';
 
-function hearts(){
-  setInterval(()=>{
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤️";
-    h.style.left=Math.random()*100+"vw";
+  document.getElementById('bigHeart').style.display='block';
+
+  setTimeout(()=>{
+    let t=document.getElementById('loveTitle');
+    t.style.opacity=1;
+    t.style.transform='scale(1)';
+  },500);
+
+  setTimeout(()=>{
+    document.querySelector('.final-line').style.display='block';
+  },1500);
+
+  setTimeout(()=>{
+    document.getElementById('msgBox').style.display='block';
+  },2500);
+
+  for(let i=0;i<25;i++){
+    let h=document.createElement('div');
+    h.className='heart';
+    h.innerHTML='❤️';
+    h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(14+Math.random()*20)+'px';
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(),4000);
-  },260);
-}
+    setTimeout(()=>h.remove(),6000);
+  }
+};
 
-/* KEYBOARD HANDLING */
-msgInput.addEventListener("focus",()=>msgBox.classList.add("floating"));
-msgInput.addEventListener("blur",()=>msgBox.classList.remove("floating"));
-
-if(window.visualViewport){
-  visualViewport.addEventListener("resize",()=>{
-    if(visualViewport.height < window.innerHeight){
-      msgBox.classList.add("floating");
-    }else{
-      msgBox.classList.remove("floating");
-    }
-  });
-}
-
-/* SEND */
 function sendMsg(){
-  const txt=msgInput.value.trim();
-  if(!txt){alert("Please write something ❤️");return;}
-  location.href="https://wa.me/919955414283?text="+encodeURIComponent(txt);
+  let txt=document.getElementById('msg').value.trim();
+  if(!txt) return;
+  document.getElementById('success').style.display='block';
 }
 </script>
 
