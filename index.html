@@ -1,126 +1,226 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Ankita ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+
 body{
-  margin:0;
-  background:linear-gradient(#fff,#ffe6f0);
-  font-family:system-ui,sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-}
-
-.container{
-  max-width:600px;
-  margin:auto;
-  padding:20px;
-}
-
-/* ❤️ Heart + Name (NO GAP) */
-.name-wrap{
+  background:linear-gradient(135deg,#ffd6e8,#ffffff);
+  min-height:100vh;
   display:flex;
-  flex-direction:column;
+  justify-content:center;
   align-items:center;
-  gap:0;
 }
 
-.big-heart{
-  font-size:64px;
-  line-height:1;
-  transform:translateY(8px);
-  animation:beat 1.3s infinite;
-}
-
-@keyframes beat{
-  0%,100%{transform:translateY(8px) scale(1);}
-  50%{transform:translateY(8px) scale(1.1);}
-}
-
-.name{
-  font-family:'Pacifico',cursive;
-  font-size:48px;
-  margin:0;
-  color:#ff2f7d;
-}
-
-/* Typing wait */
-.typing{
-  margin-top:40px;
-  font-family:monospace;
-  font-size:20px;
-  color:#ff6b9d;
-  min-height:28px;
-}
-
-/* Shayari */
-.shayari{
-  display:none;
-  margin-top:30px;
-  font-size:20px;
-  line-height:1.7;
-  padding:0 10px;
-}
-
-/* Buttons */
-.buttons{
-  margin-top:50px;
+.card{
+  width:95%;
+  max-width:520px;
+  background:#fff;
+  border-radius:30px;
+  padding:26px;
+  box-shadow:0 30px 70px rgba(255,105,180,.35);
+  max-height:90vh;
+  overflow-y:auto;
+  scroll-behavior:smooth;
+  text-align:center;
   position:relative;
-  height:160px;
+}
+
+h1{
+  font-family:cursive;
+  font-size:34px;
+  color:#ff4f9a;
+}
+
+.underline{
+  width:120px;height:3px;background:#ff4f9a;
+  margin:6px auto 18px;border-radius:10px;
+}
+
+.subhead{font-size:14px;color:#777;margin-bottom:22px}
+
+.text{font-size:18px;line-height:1.7;color:#444;margin-bottom:25px}
+
+.question{font-size:17px;display:none;margin-top:20px}
+
+.buttons{
+  margin-top:25px;
+  display:none;
+  position:relative;
+  height:120px;
 }
 
 button{
   padding:14px 30px;
-  font-size:20px;
+  font-size:18px;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
   cursor:pointer;
 }
 
-#noBtn{
-  background:#eee;
-  position:absolute;
-  left:50%;
-  top:40px;
-  transform:translate(-140px,0);
-  transition:transform .35s ease;
+#yesBtn{
+  background:#ff4f9a;color:#fff;display:none;
 }
 
-#yesBtn{
-  background:#ff2f7d;
-  color:#fff;
-  display:none;
+#noBtn{
+  background:#fff;
+  border:2px solid #ff4f9a;
+  color:#ff4f9a;
+  position:absolute;
+  left:50%;
+  top:20px;
+  transform:translateX(-50%);
+}
+
+/* ❤️ HEART ABOVE LOVE TEXT */
+.big-heart{
+  font-size:60px;
+  margin-top:20px;
+  animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.25)}
+}
+
+/* LOVE TITLE */
+#loveTitle{
+  font-family:cursive;
+  font-size:44px;
+  margin:10px 0 10px;
+  opacity:0;
+  transform:scale(.85);
+  background:linear-gradient(90deg,#ff2f7d,#ff9fc4,#ff2f7d);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+}
+
+#loveTitle.show{
+  opacity:1;
+  transform:scale(1);
+  animation:glow 3s linear infinite;
+}
+
+@keyframes glow{
+  to{background-position:200% center}
+}
+
+#finalText{
+  font-size:22px;
+  color:#ff3b7f;
+  margin-top:25px;
+  min-height:80px;
+}
+
+/* MESSAGE AREA */
+#msgBox{
+  margin-top:25px;
+}
+
+.msg-row{
+  display:flex;
+  gap:10px;
+}
+
+textarea{
+  flex:1;
+  height:70px;
+  border-radius:15px;
+  border:1px solid #ccc;
+  padding:12px;
+  font-size:15px;
+  resize:none;
+}
+
+.sendBtn{
+  width:100%;
+  margin-top:12px;
+  background:#25D366;
+  color:white;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  font-size:16px;
+}
+
+/* FLOATING MODE (keyboard open) */
+#msgBox.floating{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#fff;
+  padding:16px;
+  box-shadow:0 -10px 30px rgba(0,0,0,.15);
+  z-index:9999;
+  border-radius:18px 18px 0 0;
+}
+
+.heart{
+  position:fixed;
+  color:red;
+  font-size:22px;
+  animation:float 4s linear forwards;
+}
+
+@keyframes float{
+  0%{bottom:0;opacity:1}
+  100%{bottom:100vh;opacity:0}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="card" id="card">
 
-  <div class="name-wrap">
-    <div class="big-heart">❤️</div>
-    <div class="name">Ankita</div>
+<h1>Ankita</h1>
+<div class="underline"></div>
+
+<div class="subhead">
+This message is being sent straight from my heart ❤️
+</div>
+
+<div class="text">
+मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
+मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br>
+कैसे सीने से लगाऊँ कि किसी और के हो<br>
+मेरे होते तो बताता कि मोहब्बत क्या है
+</div>
+
+<div class="question" id="question">
+Main bas ek simple sawal poochna chahta hoon,<br>
+aur uska jawab sirf tumhari marzi se hona chahiye —<br>
+kya tumhare dil me mere liye pyaar hai?
+</div>
+
+<div class="buttons" id="buttons">
+  <button id="noBtn">No 😒</button>
+  <button id="yesBtn">Yes ❤️</button>
+</div>
+
+<!-- ❤️ GAP FILLER HEART -->
+<div class="big-heart" id="bigHeart" style="display:none;">❤️</div>
+
+<div id="loveTitle">
+  I Love You Ankita
+</div>
+
+<div id="finalText"></div>
+
+<div id="msgBox" style="display:none;">
+  <div class="msg-row">
+    <textarea id="msg"
+      placeholder="Whatever you truly feel for me — write it honestly… ❤️"></textarea>
   </div>
-
-  <div id="typing" class="typing"></div>
-
-  <div id="shayari" class="shayari">
-    मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
-    मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br><br>
-    कैसे सीने से लगाऊँ कि किसी और के हो<br>
-    मेरे होते तो बताता कि मोहब्बत क्या है
-  </div>
-
-  <div class="buttons">
-    <button id="noBtn">No 🙄</button>
-    <button id="yesBtn">Yes ❤️</button>
-  </div>
+  <button class="sendBtn" onclick="sendMsg()">Send 💌</button>
+</div>
 
 </div>
 
@@ -128,71 +228,108 @@ button{
 <audio id="yesSong" src="ankita-song.mp3"></audio>
 
 <script>
-/* Typing illusion */
-let dots=0;
-const typing=document.getElementById("typing");
-const shayari=document.getElementById("shayari");
-
-const typingAnim=setInterval(()=>{
-  dots=(dots+1)%4;
-  typing.textContent="typing"+ ".".repeat(dots)+"|";
-},500);
-
-setTimeout(()=>{
-  clearInterval(typingAnim);
-  typing.style.display="none";
-  shayari.style.display="block";
-},6000);
-
-/* NO button diagonal (carrom goti) logic */
+const question=document.getElementById("question");
+const buttons=document.getElementById("buttons");
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
-const noVoice=document.getElementById("noVoice");
+const card=document.getElementById("card");
+const finalText=document.getElementById("finalText");
+const msgBox=document.getElementById("msgBox");
+const msgInput=document.getElementById("msg");
+const bigHeart=document.getElementById("bigHeart");
 
-let voiceAllowed=false;
-setTimeout(()=>{ voiceAllowed=true; },7000);
+/* FLOW */
+setTimeout(()=>{
+  question.style.display="block";
+  setTimeout(()=>buttons.style.display="block",5000);
+},6000);
 
-const diagonals=[
-  {x:140,y:-60},
-  {x:-140,y:60},
-  {x:160,y:50},
-  {x:-160,y:-50}
-];
-let d=0;
+/* NO BUTTON */
+let noStart=null, voicePlayed=false;
 
-function moveDiagonal(){
-  const pos=diagonals[d%diagonals.length];
-  noBtn.style.transform=`translate(${pos.x}px,${pos.y}px)`;
-  d++;
-}
+noBtn.onclick=()=>{
+  if(!noStart) noStart=Date.now();
+  let t=Date.now()-noStart;
 
-/* touch / hover → diagonal bhagna */
-["mouseenter","touchstart"].forEach(evt=>{
-  noBtn.addEventListener(evt,()=>{
-    if(!voiceAllowed) moveDiagonal();
-  });
-});
+  if(t<7000){
+    moveNo(); return;
+  }
 
-/* click */
-noBtn.addEventListener("click",()=>{
-  if(!voiceAllowed){
-    moveDiagonal();
-  }else{
-    noVoice.volume=1;
-    noVoice.play();
+  if(!voicePlayed){
+    voicePlayed=true;
+    document.getElementById("noVoice").play();
     setTimeout(()=>{
-      noBtn.style.display="none";
       yesBtn.style.display="inline-block";
+      noBtn.style.display="none";
     },6000);
   }
-});
+};
+
+function moveNo(){
+  const x=Math.random()*(card.clientWidth-noBtn.offsetWidth-20);
+  const y=Math.random()*70;
+  noBtn.style.transition="all .25s";
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+}
 
 /* YES */
-yesBtn.addEventListener("click",()=>{
-  const song=document.getElementById("yesSong");
-  song.volume=1;
-  song.play();
-});
+yesBtn.onclick=()=>{
+  document.getElementById("yesSong").play();
+  yesBtn.style.display="none";
+  bigHeart.style.display="block";
+  document.getElementById("loveTitle").classList.add("show");
+  typeText();
+  hearts();
+};
+
+function typeText(){
+  const txt="तुम जिंदगी की वो कमी हो, जो शायद जिंदगी भर रहेगी…!!!";
+  let i=0;
+  let t=setInterval(()=>{
+    finalText.innerHTML+=txt.charAt(i);
+    i++;
+    card.scrollTop=card.scrollHeight;
+    if(i>=txt.length){
+      clearInterval(t);
+      setTimeout(()=>msgBox.style.display="block",500);
+    }
+  },120);
+}
+
+function hearts(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  },280);
+}
+
+/* KEYBOARD BEHAVIOR */
+msgInput.addEventListener("focus",()=>msgBox.classList.add("floating"));
+msgInput.addEventListener("blur",()=>msgBox.classList.remove("floating"));
+
+if(window.visualViewport){
+  visualViewport.addEventListener("resize",()=>{
+    if(visualViewport.height < window.innerHeight){
+      msgBox.classList.add("floating");
+    }else{
+      msgBox.classList.remove("floating");
+    }
+  });
+}
+
+/* SEND */
+function sendMsg(){
+  const txt=msgInput.value;
+  window.open(
+    `https://wa.me/919955414283?text=${encodeURIComponent(txt)}`,
+    "_blank"
+  );
+}
 </script>
 
 </body>
