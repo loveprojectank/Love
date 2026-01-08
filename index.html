@@ -3,169 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ankita ❤️</title>
+<title>For Ankita ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
-
 body{
   margin:0;
-  background:linear-gradient(135deg,#ffd6e8,#fff);
+  background:linear-gradient(#fff,#ffe6f0);
+  font-family:system-ui,sans-serif;
+  text-align:center;
   overflow-x:hidden;
 }
 
 .container{
-  max-width:520px;
-  margin:20px auto;
-  background:#fff;
-  border-radius:20px;
-  padding:25px 20px 30px;
-  box-shadow:0 10px 40px rgba(255,105,180,.25);
-  position:relative;
+  max-width:600px;
+  margin:auto;
+  padding:20px;
 }
 
-/* floating hearts */
-.heart{
-  position:fixed;
-  color:#ff4d88;
-  animation:floatUp 6s linear infinite;
-  opacity:.6;
+/* ❤️ Heart + Name (NO GAP) */
+.name-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
 }
 
-@keyframes floatUp{
-  from{transform:translateY(100vh);opacity:0}
-  to{transform:translateY(-10vh);opacity:1}
-}
-
-/* heading */
-h1{
-  margin:0;
-  text-align:center;
-  font-family:cursive;
-  font-size:42px;
-  color:#ff4d88;
-}
-
-.subtitle{
-  text-align:center;
-  margin-top:4px;
-  font-size:15px;
-  color:#666;
-}
-
-/* text sections */
-.text{
-  text-align:center;
-  margin-top:30px;
-  font-size:18px;
-  line-height:1.7;
-  color:#444;
-  display:none;
-}
-
-/* NO button */
-#noBtn{
-  margin:30px auto 0;
-  display:none;
-  padding:14px 36px;
-  font-size:18px;
-  border:none;
-  border-radius:40px;
-  background:#ffd1e1;
-  color:#ff2f7d;
-  cursor:pointer;
-  position:relative;
-  transition:.3s;
-}
-
-/* YES button */
-#yesBtn{
-  display:none;
-  margin:30px auto 0;
-  padding:14px 45px;
-  font-size:20px;
-  border:none;
-  border-radius:40px;
-  background:#ff2f7d;
-  color:#fff;
-  cursor:pointer;
-}
-
-/* heart + love */
 .big-heart{
-  font-size:60px;
-  margin:0;
-  margin-top:-10px;
+  font-size:64px;
   line-height:1;
-  display:none;
-  animation:heartbeat 1.3s infinite;
-  text-align:center;
+  transform:translateY(8px);
+  animation:beat 1.3s infinite;
 }
 
-@keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.25)}
+@keyframes beat{
+  0%,100%{transform:translateY(8px) scale(1);}
+  50%{transform:translateY(8px) scale(1.1);}
 }
 
-#loveTitle{
-  font-family:cursive;
-  font-size:44px;
-  margin:0 0 10px;
-  opacity:0;
-  transform:scale(.85);
-  text-align:center;
-  background:linear-gradient(90deg,#ff2f7d,#ff9fc4,#ff2f7d);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.name{
+  font-family:'Pacifico',cursive;
+  font-size:48px;
+  margin:0;
+  color:#ff2f7d;
 }
 
-/* final line */
-.final-line{
-  text-align:center;
+/* Typing wait */
+.typing{
+  margin-top:40px;
+  font-family:monospace;
   font-size:20px;
-  margin-top:10px;
-  color:#ff4d88;
+  color:#ff6b9d;
+  min-height:28px;
+}
+
+/* Shayari */
+.shayari{
   display:none;
+  margin-top:30px;
+  font-size:20px;
+  line-height:1.7;
+  padding:0 10px;
 }
 
-/* message box */
-.msg-box{
-  margin-top:25px;
-  display:none;
-  position:sticky;
-  bottom:0;
-  background:#fff;
-  padding:10px;
+/* Buttons */
+.buttons{
+  margin-top:50px;
+  position:relative;
+  height:160px;
 }
 
-textarea{
-  width:100%;
-  height:90px;
-  border-radius:15px;
-  border:1px solid #ffb6cf;
-  padding:12px;
-  font-size:16px;
-  resize:none;
-}
-
-.send-btn{
-  margin-top:10px;
-  width:100%;
-  padding:14px;
+button{
+  padding:14px 30px;
+  font-size:20px;
   border:none;
   border-radius:30px;
-  background:#25D366;
-  color:#fff;
-  font-size:18px;
+  cursor:pointer;
 }
 
-.success{
-  text-align:center;
-  color:#25D366;
-  margin-top:10px;
+#noBtn{
+  background:#eee;
+  position:absolute;
+  left:50%;
+  top:40px;
+  transform:translate(-140px,0);
+  transition:transform .35s ease;
+}
+
+#yesBtn{
+  background:#ff2f7d;
+  color:#fff;
   display:none;
 }
 </style>
@@ -175,119 +103,96 @@ textarea{
 
 <div class="container">
 
-<h1>Ankita</h1>
-<div class="subtitle">This message is sent straight from my heart ❤️</div>
+  <div class="name-wrap">
+    <div class="big-heart">❤️</div>
+    <div class="name">Ankita</div>
+  </div>
 
-<div id="shayari1" class="text">
-मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
-मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br>
-कैसे सीने से लगाऊँ कि किसी और के हो<br>
-मेरे होते तो बताता कि मोहब्बत क्या है
-</div>
+  <div id="typing" class="typing"></div>
 
-<div id="shayari2" class="text">
-Main bas ek simple sawal poochna chahta hoon,<br>
-aur uska jawab sirf tumhari marzi se hona chahiye —<br>
-<b>kya tumhare dil me mere liye pyaar hai?</b>
-</div>
+  <div id="shayari" class="shayari">
+    मुँह ज़बानी न जताता कि मोहब्बत क्या है<br>
+    मैं तुझे कर के दिखाता कि मोहब्बत क्या है<br><br>
+    कैसे सीने से लगाऊँ कि किसी और के हो<br>
+    मेरे होते तो बताता कि मोहब्बत क्या है
+  </div>
 
-<button id="noBtn">No 😠</button>
-<button id="yesBtn">Yes ❤️</button>
-
-<div class="big-heart" id="bigHeart">❤️</div>
-<div id="loveTitle">I Love You Ankita</div>
-
-<div class="final-line">
-तुम जिंदगी की वो कमी हो,<br>
-जो शायद जिंदगी भर रहेगी…!!!
-</div>
-
-<div class="msg-box" id="msgBox">
-<textarea id="msg" placeholder="Whatever you truly feel for me — write it honestly... ❤️"></textarea>
-<button class="send-btn" onclick="sendMsg()">Send 💌</button>
-<div class="success" id="success">Message sent successfully ❤️</div>
-</div>
+  <div class="buttons">
+    <button id="noBtn">No 🙄</button>
+    <button id="yesBtn">Yes ❤️</button>
+  </div>
 
 </div>
 
-<audio id="voice" src="ankita-voice.mp3"></audio>
-<audio id="song" src="ankita-song.mp3"></audio>
+<audio id="noVoice" src="ankita-voice.mp3"></audio>
+<audio id="yesSong" src="ankita-song.mp3"></audio>
 
 <script>
-let noBtn=document.getElementById('noBtn');
-let yesBtn=document.getElementById('yesBtn');
-let noStart=Date.now();
-let voicePlayed=false;
+/* Typing illusion */
+let dots=0;
+const typing=document.getElementById("typing");
+const shayari=document.getElementById("shayari");
+
+const typingAnim=setInterval(()=>{
+  dots=(dots+1)%4;
+  typing.textContent="typing"+ ".".repeat(dots)+"|";
+},500);
 
 setTimeout(()=>{
-  document.getElementById('shayari1').style.display='block';
-},1000);
+  clearInterval(typingAnim);
+  typing.style.display="none";
+  shayari.style.display="block";
+},6000);
 
-setTimeout(()=>{
-  document.getElementById('shayari2').style.display='block';
-  noBtn.style.display='block';
-},10000);
+/* NO button diagonal (carrom goti) logic */
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const noVoice=document.getElementById("noVoice");
 
-noBtn.addEventListener('touchstart',moveNo);
-noBtn.addEventListener('mouseover',moveNo);
+let voiceAllowed=false;
+setTimeout(()=>{ voiceAllowed=true; },7000);
 
-function moveNo(){
-  let elapsed=(Date.now()-noStart)/1000;
-  if(elapsed<7){
-    let x=Math.random()*200-100;
-    let y=Math.random()*150-75;
-    noBtn.style.transform=`translate(${x}px,${y}px)`;
-  }
+const diagonals=[
+  {x:140,y:-60},
+  {x:-140,y:60},
+  {x:160,y:50},
+  {x:-160,y:-50}
+];
+let d=0;
+
+function moveDiagonal(){
+  const pos=diagonals[d%diagonals.length];
+  noBtn.style.transform=`translate(${pos.x}px,${pos.y}px)`;
+  d++;
 }
 
-noBtn.onclick=()=>{
-  let elapsed=(Date.now()-noStart)/1000;
-  if(elapsed>=7 && !voicePlayed){
-    document.getElementById('voice').play();
-    voicePlayed=true;
+/* touch / hover → diagonal bhagna */
+["mouseenter","touchstart"].forEach(evt=>{
+  noBtn.addEventListener(evt,()=>{
+    if(!voiceAllowed) moveDiagonal();
+  });
+});
+
+/* click */
+noBtn.addEventListener("click",()=>{
+  if(!voiceAllowed){
+    moveDiagonal();
+  }else{
+    noVoice.volume=1;
+    noVoice.play();
     setTimeout(()=>{
-      yesBtn.style.display='block';
-      noBtn.style.display='none';
+      noBtn.style.display="none";
+      yesBtn.style.display="inline-block";
     },6000);
   }
-};
+});
 
-yesBtn.onclick=()=>{
-  document.getElementById('song').play();
-  yesBtn.style.display='none';
-
-  document.getElementById('bigHeart').style.display='block';
-
-  setTimeout(()=>{
-    let t=document.getElementById('loveTitle');
-    t.style.opacity=1;
-    t.style.transform='scale(1)';
-  },500);
-
-  setTimeout(()=>{
-    document.querySelector('.final-line').style.display='block';
-  },1500);
-
-  setTimeout(()=>{
-    document.getElementById('msgBox').style.display='block';
-  },2500);
-
-  for(let i=0;i<25;i++){
-    let h=document.createElement('div');
-    h.className='heart';
-    h.innerHTML='❤️';
-    h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(14+Math.random()*20)+'px';
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),6000);
-  }
-};
-
-function sendMsg(){
-  let txt=document.getElementById('msg').value.trim();
-  if(!txt) return;
-  document.getElementById('success').style.display='block';
-}
+/* YES */
+yesBtn.addEventListener("click",()=>{
+  const song=document.getElementById("yesSong");
+  song.volume=1;
+  song.play();
+});
 </script>
 
 </body>
